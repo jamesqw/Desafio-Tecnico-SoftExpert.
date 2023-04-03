@@ -1,4 +1,4 @@
-h1< Desafio Técnico PHP >h1
+Desafio Técnico PHP <h1 align="center"> Desafio Técnico PHP </h1>
 Este é um desafio técnico em PHP para criar um sistema de vendas para um mercado. O sistema deve permitir o cadastro de produtos, tipos de produtos e valores percentuais de imposto para cada tipo de produto. Além disso, o sistema deve ter uma tela de vendas que permita informar os produtos e quantidades adquiridas. O sistema deve calcular o valor de cada item multiplicado pela quantidade adquirida, a quantidade paga de imposto em cada item, um totalizador do valor da compra e um totalizador do valor dos impostos.
 
 ##Requisitos do sistema##
