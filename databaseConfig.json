@@ -1,0 +1,10 @@
+{
+    "database": 
+    {
+      "host": "localhost",
+      "port" : "5432",
+      "databaseName": "supermarket",
+      "user": "softExpMarket",
+      "password": "Amc01pka@"
+    }
+}

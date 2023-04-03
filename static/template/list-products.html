@@ -1,0 +1,100 @@
+<nav class="actionList">
+	<button type="button" class="btn btn btn-success" data-toggle="modal"  data-target="#modalIncluir">Incluir</button>
+	<button type="button" class="btn btn-danger" onclick="deleteItem()">Excluir</button>
+</nav>
+<table class="tableTypeProduct">
+{{#listTypeProduct}}
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">Código</th>
+        <th scope="col">Descrição Tipo Produto</th>
+        <th scope="col">Imposto</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#typeProducts}}
+      <tr>
+        <td><input type="checkbox" id="typeProduct" onclick="handleClickCheckbox(this, 'delTypeProduct')"></td>
+        <td scope="row">{{cdTypeProduct}}</td>		
+        <td>{{nmTypeProduct}}</td>
+        <td>{{taxType}}</td>
+      </tr>
+	{{/typeProducts}}
+{{/listTypeProduct}}
+{{#listProduct}}
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">Código</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor Unitário</th>
+        <th scope="col">Tipo do Produto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#products}}
+      <tr>
+          <td><input type="checkbox" id="product" onclick="handleClickCheckbox(this, 'delProduct')"></td>
+          <td scope="row">{{cdProduct}}</td>		
+          <td>{{nmProduct}}</td>
+          <td>{{price}}</td>
+          <td>{{nmTypeProduct}}</td>
+      </tr>
+      {{/products}}
+    </tbody>
+{{/listProduct}}
+</table>
+
+<!-- Modal -->
+ <div class="modal fade" id="modalIncluir" tabindex="-1" role="dialog" aria-labelledby="modalIncluirLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalIncluirLabel">Incluir Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{#listTypeProduct}}
+            <div id="cadastrarTipoProduto" class="clickAddType">
+              <label for="nome">Tipo do Produto:</label>
+              <input type="text" id="nameType" name="nome" required>
+              <label for="percent-input">Imposto:</label>
+              <div id="percentt">
+                  <input type="text" id="percent-input" onkeypress="return onlynumber();" name="percent-input" min="0" max="10" step="0.01" required>
+                  <label id="cifrPorcent"> % </label>
+              </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" onclick="addTypeProduct()" type="button">Adicionar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+	         {{/listTypeProduct}}
+
+           {{#listProduct}}
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nameProduct" name="nome" required>
+                
+            <label for="typeProduct">Tipo do Produto:</label>
+            <select id="typeProduct" name="typeProduct" required>
+              <option value=""></option>
+              {{#comboTypeProduct}}
+              <option value="{{cdProduct}}">{{nmProduct}}</option>
+              {{/comboTypeProduct}}
+            </select>
+        
+            <label for="preco">Preço:</label>
+            <input type="text" step="any" id="price" name="price" onkeyup="formatValuePricePress();"  required>
+        
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="addProduct()" type="button">Adicionar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+          {{/listProduct}}
+      </div>
+    </div>
+  </div>
